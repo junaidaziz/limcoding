@@ -1,0 +1,101 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version 2.3.0
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
+List of Apis
+
+http://localhost:3000/api/v1/pages # to het pages list and content of these pages.
+Simple get request sample response:
+
+{
+  "urls": [
+    {
+      "url": "http://forexent.com/pages/about",
+      "page_content": {
+        "h1": [
+          ""
+        ],
+        "h2": [
+          "About Us",
+          "Welcome to FOREXENTPROFIT MAKER CONSULTANT",
+        ],
+        "h3": [
+          "SWISSQUOTE BANK",
+          "CF MERCHANTS LIMITED",
+
+        ],
+        "links": [
+          "https://apply.swissquote.com/signups/fx/com/individual?execution=e1s1",
+        ]
+      }
+    }
+    
+    Post request to crawel content for given url
+    
+    http://localhost:3000/api/v1/pages
+    
+    params {"url": "http://forexent.com/pages/about"}
+    
+    Response:
+    
+    {
+      "status": "saved",
+      "message": "Page content was successfully saved."
+    }
+    
+
+Api to get content for a specfic url
+
+http://localhost:3000/api/v1/pages/get_content?url=http://forexent.com/pages/about
+
+params send url as params:
+
+Response:
+
+{
+  "data": {
+    "url": "http://forexent.com/pages/about",
+    "page_content": {
+      "h1": [
+        ""
+      ],
+      "h2": [
+        "About Us",
+        "Welcome to FOREXENTPROFIT MAKER CONSULTANT",
+        "Found a reason to work with us? Lets's start!"
+      ],
+      "h3": [
+        "SWISSQUOTE BANK",
+        "CF MERCHANTS LIMITED",
+        "Our Representatives"
+      ],
+      "links": [
+        "https://apply.swissquote.com/signups/fx/com/individual?execution=e1s1"
+      ]
+    }
+  }
+}
